@@ -1,0 +1,11 @@
+{
+  "name": "swiggy-web-application",
+  "version": "1.0.0",
+  "description": "Swiggy Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Sarvesh Srivastava",
+  "license": "ISC"
+}
