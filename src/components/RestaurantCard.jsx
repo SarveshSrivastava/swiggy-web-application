@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import RatingLogo from "../assets/RatingLogo";
 
 const RestaurantCard = ({
@@ -7,27 +8,49 @@ const RestaurantCard = ({
   areaName,
   slaString,
   cloudinaryImageId,
+  css,
+  restaurantId,
 }) => {
   return (
-    <div className="w-1/5 mx-9 my-5 rounded-xl ease-out hover:scale-95 cursor-pointer">
-      <img
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/" +
-          cloudinaryImageId
-        }
-        alt={name}
-        className="w-96 h-64 rounded-xl"
-      />
-      <p className="text-xl font-semibold">{name}</p>
-      {/* <RatingLogo /> */}
-      <h2 className="flex">
-        {avgRating}{" "}
-        <span className="inline-block h-1 w-1 bg-black rounded-full my-auto mx-5"></span>{" "}
-        {slaString}
-      </h2>
-      <p className="overflow-hidden overflow-ellipsis whitespace-nowrap">{cuisines.join(", ")}</p>
-      <p>{areaName}</p>
+    <div className={css}>
+      <Link to={"restaurant/" + restaurantId}>
+        <img
+          src={
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/" +
+            cloudinaryImageId
+          }
+          alt={name}
+          className="w-96 h-64 rounded-xl"
+        />
+        <p className="text-xl font-semibold">{name}</p>
+        {/* <RatingLogo /> */}
+        <span className="flex items-center">
+          <RatingLogo />
+          <h2 className="flex px-0.5">
+            {avgRating}
+            <span className="inline-block h-1 w-1 bg-black rounded-full my-auto mx-5"></span>
+            {slaString}
+          </h2>
+        </span>
+        <p className="overflow-hidden overflow-ellipsis whitespace-nowrap">
+          {cuisines.join(", ")}
+        </p>
+        <p>{areaName}</p>
+      </Link>
     </div>
   );
+};
+
+export const pureVegRestaurantCard = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <span className="w-1/5 mx-9 my-5 rounded-xl ease-out hover:scale-95 cursor-pointer">
+        <label className="absolute rounded-lg bg-green-300 font-semibold p-2 mt-4 -ml-4">
+          Pure Veg
+        </label>
+        <RestaurantCard {...props} />
+      </span>
+    );
+  };
 };
 export default RestaurantCard;

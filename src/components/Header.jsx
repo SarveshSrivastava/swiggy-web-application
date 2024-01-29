@@ -2,7 +2,7 @@ import SwiggyLogo from "../assets/SwiggyLogo";
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
-    <div className="flex justify-between w-9/12 mx-auto bg-slate-100 rounded-md drop-shadow-lg p-4 fixed top-0 right-0 left-0">
+    <div className="flex justify-between w-9/12 mx-auto bg-slate-100 rounded-md drop-shadow-lg p-4 fixed top-0 right-0 left-0 z-50">
       <SwiggyLogo />
       <ul className="flex space-x-6 my-auto">
         <Link to="/"><li>Home</li></Link>

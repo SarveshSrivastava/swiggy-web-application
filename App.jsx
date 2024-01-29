@@ -4,6 +4,7 @@ import "./index.css";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./src/components/ErrorPage";
 import Restaurants from "./src/components/Restaurants";
+import RestaurantMenu from "./src/components/RestaurantMenu";
 const App = () => {
   return (
     <div>
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: "",
+      },
+      {
+        path: "/restaurant/:restaurantId",
+        element: <RestaurantMenu />,
       },
     ],
     errorElement: <ErrorPage />,

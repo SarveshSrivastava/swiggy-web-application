@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { pureVegRestaurantCard } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 const Restaurants = () => {
   const [restaurantsInfo, setRestaurantsInfo] = useState(null);
@@ -19,9 +19,9 @@ const Restaurants = () => {
     );
     setRestaurantsInfo(jsonData.data.cards);
   };
-
+  const PureVegRestaurantCard = pureVegRestaurantCard(RestaurantCard);
   return restaurantsInfo === null ? (
-    <Shimmer/>
+    <Shimmer />
   ) : (
     <>
       <p className="w-9/12 mx-auto text-3xl font-bold pt-24">
@@ -30,7 +30,19 @@ const Restaurants = () => {
       <div className="flex w-9/12 mx-auto flex-wrap justify-center">
         {restaurantsInfo[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(
           (restaurant) => {
-            return (
+            return restaurant.info.veg ? (
+              <PureVegRestaurantCard
+                key={restaurant.info.id}
+                name={restaurant.info.name}
+                cuisines={restaurant.info.cuisines}
+                avgRating={restaurant.info.avgRating}
+                areaName={restaurant.info.areaName}
+                cloudinaryImageId={restaurant.info.cloudinaryImageId}
+                slaString={restaurant.info.sla.slaString}
+                css=""
+                restaurantId={restaurant.info.id}
+              />
+            ) : (
               <RestaurantCard
                 key={restaurant.info.id}
                 name={restaurant.info.name}
@@ -39,6 +51,8 @@ const Restaurants = () => {
                 areaName={restaurant.info.areaName}
                 cloudinaryImageId={restaurant.info.cloudinaryImageId}
                 slaString={restaurant.info.sla.slaString}
+                css="w-1/5 mx-9 my-5 rounded-xl ease-out hover:scale-95 cursor-pointer"
+                restaurantId={restaurant.info.id}
               />
             );
           }
@@ -50,7 +64,19 @@ const Restaurants = () => {
       <div className="flex w-9/12 mx-auto flex-wrap justify-center">
         {restaurantsInfo[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(
           (restaurant) => {
-            return (
+            return restaurant.info.veg ? (
+              <PureVegRestaurantCard
+                key={restaurant.info.id}
+                name={restaurant.info.name}
+                cuisines={restaurant.info.cuisines}
+                avgRating={restaurant.info.avgRating}
+                areaName={restaurant.info.areaName}
+                cloudinaryImageId={restaurant.info.cloudinaryImageId}
+                slaString={restaurant.info.sla.slaString}
+                css=""
+                restaurantId={restaurant.info.id}
+              />
+            ) : (
               <RestaurantCard
                 key={restaurant.info.id}
                 name={restaurant.info.name}
@@ -59,6 +85,8 @@ const Restaurants = () => {
                 areaName={restaurant.info.areaName}
                 cloudinaryImageId={restaurant.info.cloudinaryImageId}
                 slaString={restaurant.info.sla.slaString}
+                css="w-1/5 mx-9 my-5 rounded-xl ease-out hover:scale-95 cursor-pointer"
+                restaurantId={restaurant.info.id}
               />
             );
           }

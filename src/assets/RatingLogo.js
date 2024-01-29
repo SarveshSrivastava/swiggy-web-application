@@ -6,9 +6,9 @@ const RatingLogo = () => {
       viewBox="0 0 20 20"
       fill="none"
       role="img"
-      ariaHidden="true"
-      strokeColor="rgba(2, 6, 12, 0.92)"
-      fillColor="rgba(2, 6, 12, 0.92)"
+      aria-hidden="true"
+      strokecolor="rgba(2, 6, 12, 0.92)"
+      fillcolor="rgba(2, 6, 12, 0.92)"
     >
       <circle
         cx="10"
