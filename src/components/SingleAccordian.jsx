@@ -1,11 +1,12 @@
 import { useState } from "react";
 import RestaurantMenuItems from "./RestaurantMenuItems";
 
-const SingleAccordian = ({ accordian }) => {
-  const [expand, setExpand] = useState(false);
-
+const SingleAccordian = ({ accordian, showIndexProps, handleShowIndex }) => {
+  //   const [expand, setExpand] = useState(false);
+    //uncontrolled component now it is controlled by parent this is known as lifting the state up
   const handleClick = () => {
-    setExpand(!expand);
+    // setExpand(!expand);
+    handleShowIndex();
   };
   return (
     <div
@@ -20,9 +21,9 @@ const SingleAccordian = ({ accordian }) => {
           {accordian.card.card.title} ({accordian?.card?.card?.itemCards.length}
           )
         </h1>
-        <h1>{expand ? "🔼" : "🔽"}</h1>
+        <h1>{showIndexProps ? "🔼" : "🔽"}</h1>
       </span>
-      {expand && (
+      {showIndexProps && (
         <RestaurantMenuItems items={accordian?.card?.card?.itemCards} />
       )}
     </div>

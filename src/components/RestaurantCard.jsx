@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import RatingLogo from "../assets/RatingLogo";
+import errorImage from "../assets/No-image-found.jpg";
 
 const RestaurantCard = ({
   name,
@@ -11,6 +12,10 @@ const RestaurantCard = ({
   css,
   restaurantId,
 }) => {
+  const handleErrorImage = (event) => {
+    event.target.src = errorImage;
+  };
+
   return (
     <div className={css}>
       <Link to={"restaurant/" + restaurantId}>
@@ -19,6 +24,7 @@ const RestaurantCard = ({
             "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/" +
             cloudinaryImageId
           }
+          onError={handleErrorImage}
           alt={name}
           className="w-96 h-64 rounded-xl"
         />

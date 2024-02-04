@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SingleAccordian from "./SingleAccordian";
 
 const RestaurantMenuAccordian = ({
@@ -10,6 +11,8 @@ const RestaurantMenuAccordian = ({
   slaString,
 }) => {
   console.log(menu);
+
+  const [showIndex, setShowIndex] = useState(null);
 
   return (
     <div className="pt-24 w-9/12 mx-auto">
@@ -28,8 +31,15 @@ const RestaurantMenuAccordian = ({
         <h2 className="py-4"></h2>
         <h2 className="pl-3 py-4">{costForTwoMessage}</h2>
       </div>
-      {menu.map((x) => (
-        <SingleAccordian key={x.card.card.title} accordian={x} />
+      {menu.map((x, index) => (
+        <SingleAccordian
+          key={x.card.card.title}
+          accordian={x}
+          showIndexProps={index === showIndex ? true : false}
+          handleShowIndex={() => {
+            setShowIndex(index);
+          }}
+        />
       ))}
     </div>
   );
