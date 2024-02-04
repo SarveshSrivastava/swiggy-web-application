@@ -3,7 +3,7 @@ const RestaurantMenuItems = ({ items }) => {
   return (
     <div>
       {items.map((i) => (
-        <span className="flex justify-between h-20 items-center border-b-2 border-b-gray-200">
+        <span className="flex justify-between h-20 items-center border-b-2 border-b-gray-200" key={i?.card?.info?.id}>
           <span className="overflow-hidden w-3/4">
             <h1 className="text-lg font-semibold">{i?.card?.info?.isVeg?"🟢":"🔴"}{i?.card?.info?.name}</h1>
             <h2 className="font-medium">₹ {i?.card?.info?.price / 100||i?.card?.info?.defaultPrice / 100}</h2>

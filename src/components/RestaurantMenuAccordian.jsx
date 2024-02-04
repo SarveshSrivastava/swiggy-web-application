@@ -1,5 +1,4 @@
-import { useState } from "react";
-import RestaurantMenuItems from "./RestaurantMenuItems";
+import SingleAccordian from "./SingleAccordian";
 
 const RestaurantMenuAccordian = ({
   menu,
@@ -12,11 +11,6 @@ const RestaurantMenuAccordian = ({
 }) => {
   console.log(menu);
 
-  const [expand, setExpand] = useState(false);
-
-  const handleClick = () => {
-    setExpand(!expand);
-  };
   return (
     <div className="pt-24 w-9/12 mx-auto">
       <div className="flex justify-between">
@@ -35,21 +29,7 @@ const RestaurantMenuAccordian = ({
         <h2 className="pl-3 py-4">{costForTwoMessage}</h2>
       </div>
       {menu.map((x) => (
-        <div
-          className="bg-slate-50 p-4 mb-3 border-2 border-solid rounded-md"
-          key={x.card.card.title}
-        >
-          <span
-            className="flex justify-between cursor-pointer"
-            onClick={handleClick}
-          >
-            <h1 className="font-bold text-lg">
-              {x.card.card.title} ({x?.card?.card?.itemCards.length})
-            </h1>
-            <h1>{expand ? "🔼" : "🔽"}</h1>
-          </span>
-          {expand && <RestaurantMenuItems items={x?.card?.card?.itemCards} />}
-        </div>
+        <SingleAccordian key={x.card.card.title} accordian={x} />
       ))}
     </div>
   );
