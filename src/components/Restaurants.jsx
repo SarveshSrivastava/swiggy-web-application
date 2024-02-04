@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RestaurantCard, { pureVegRestaurantCard } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import UserContext from "../utils/UserContext";
 const Restaurants = () => {
   const [restaurantsInfo, setRestaurantsInfo] = useState(null);
-
+  const { loggedInUser,setUserName } = useContext(UserContext);
   useEffect(() => {
     fetchRestaurants();
   }, []);
@@ -27,6 +28,11 @@ const Restaurants = () => {
       <p className="w-9/12 mx-auto text-3xl font-bold pt-24">
         {restaurantsInfo[1]?.card?.card?.header?.title}
       </p>
+      <input
+        type="text"
+        value={loggedInUser}
+        onChange={(e) => setUserName(e.target.value)}
+      />
       <div className="flex w-9/12 mx-auto flex-wrap justify-center">
         {restaurantsInfo[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(
           (restaurant) => {

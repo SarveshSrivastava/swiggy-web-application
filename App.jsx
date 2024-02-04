@@ -5,12 +5,30 @@ import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./src/components/ErrorPage";
 import Restaurants from "./src/components/Restaurants";
 import RestaurantMenu from "./src/components/RestaurantMenu";
+// import AboutUs from "./src/components/AboutUs";
+import UserContext from "./src/utils/UserContext";
+import { Suspense, lazy, useEffect, useState } from "react";
+import Shimmer from "./src/components/Shimmer";
+
+const AboutUs = lazy(() => import("./src/components/AboutUs"));
 const App = () => {
+  const [userName, setUserName] = useState();
+  useEffect(() => {
+    //authentication logic
+    //send username and password to authentication api
+    //set the username from the response  received
+    const data = {
+      name: "Sarvesh Srivastava",
+    };
+    setUserName(data.name);
+  }, []);
   return (
-    <div>
-      <Header />
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <div>
+        <Header />
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 const router = createBrowserRouter([
@@ -24,7 +42,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/about-us",
-        element: "",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <AboutUs />
+          </Suspense>
+        ),
       },
       {
         path: "/contact-us",
