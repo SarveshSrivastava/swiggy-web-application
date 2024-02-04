@@ -28,11 +28,12 @@ const Restaurants = () => {
       <p className="w-9/12 mx-auto text-3xl font-bold pt-24">
         {restaurantsInfo[1]?.card?.card?.header?.title}
       </p>
-      <input
+      {/* Context API modify context api via input field */}
+      {/* <input
         type="text"
         value={loggedInUser}
         onChange={(e) => setUserName(e.target.value)}
-      />
+      /> */}
       <div className="flex w-9/12 mx-auto flex-wrap justify-center">
         {restaurantsInfo[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(
           (restaurant) => {

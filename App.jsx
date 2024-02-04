@@ -23,6 +23,7 @@ const App = () => {
     setUserName(data.name);
   }, []);
   return (
+    // to consume i.e., instead of useContext hook we can use <UserContext.Consume/>
     <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
       <div>
         <Header />
