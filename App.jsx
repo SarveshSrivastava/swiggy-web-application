@@ -9,6 +9,8 @@ import RestaurantMenu from "./src/components/RestaurantMenu";
 import UserContext from "./src/utils/UserContext";
 import { Suspense, lazy, useEffect, useState } from "react";
 import Shimmer from "./src/components/Shimmer";
+import { Provider } from "react-redux";
+import store from "./src/redux/store";
 
 const AboutUs = lazy(() => import("./src/components/AboutUs"));
 const App = () => {
@@ -24,12 +26,14 @@ const App = () => {
   }, []);
   return (
     // to consume i.e., instead of useContext hook we can use <UserContext.Consume/>
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div>
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={store}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div>
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 const router = createBrowserRouter([
