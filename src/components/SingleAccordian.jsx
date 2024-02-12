@@ -24,7 +24,7 @@ const SingleAccordian = ({ accordian, showIndexProps, handleShowIndex }) => {
         <h1>{showIndexProps ? "🔼" : "🔽"}</h1>
       </span>
       {showIndexProps && (
-        <RestaurantMenuItems items={accordian?.card?.card?.itemCards} />
+        <RestaurantMenuItems items={accordian?.card?.card?.itemCards} addButton={true}/>
       )}
     </div>
   );

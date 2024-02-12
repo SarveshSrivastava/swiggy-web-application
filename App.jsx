@@ -11,6 +11,7 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import Shimmer from "./src/components/Shimmer";
 import { Provider } from "react-redux";
 import store from "./src/redux/store";
+import Cart from "./src/components/Cart";
 
 const AboutUs = lazy(() => import("./src/components/AboutUs"));
 const App = () => {
@@ -59,7 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: "",
+        element: <Cart/>,
       },
       {
         path: "/restaurant/:restaurantId",
