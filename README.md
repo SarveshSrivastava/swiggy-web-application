@@ -11,3 +11,5 @@
 - install jsDom --> npm install --save-dev jest-environment-jsdom (react testing library docs)
 - create a folder with name __tests__ where we will have all our test files
 - __tests__ --> __ --> this is known as dunder (FYI)
+- install @babel/preset-react and include in babel.config.js this is required to make jsx work in test cases
+- install @testing-library/jest-dom

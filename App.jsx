@@ -14,6 +14,8 @@ import store from "./src/redux/store";
 import Cart from "./src/components/Cart";
 
 const AboutUs = lazy(() => import("./src/components/AboutUs"));
+const Contact = lazy(()=>import("./src/components/Contact"));
+
 const App = () => {
   const [userName, setUserName] = useState();
   useEffect(() => {
@@ -56,7 +58,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/contact-us",
-        element: "",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Contact />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",
